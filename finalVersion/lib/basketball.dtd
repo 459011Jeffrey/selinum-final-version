@@ -1,0 +1,36 @@
+<!ELEMENT basketball (player*,coach*,team*,match*)>
+<!ELEMENT player (name,age,team_ref,games_played)>
+<!ELEMENT coach (name,team_ref,performance)>
+<!ELEMENT name (firstname,lastname)>
+<!ELEMENT team (team_name,win_loss_record,player_ref*,coach_ref)>
+<!ELEMENT match (teams,date,score)>
+<!ELEMENT firstname (#PCDATA)>
+<!ELEMENT lastname (#PCDATA)>
+<!ELEMENT age (#PCDATA)>
+<!ELEMENT team_ref EMPTY>
+<!ELEMENT games_played (#PCDATA)>
+<!ELEMENT performance (wins,losses,ratio)>
+<!ELEMENT wins (#PCDATA)>
+<!ELEMENT losses (#PCDATA)>
+<!ELEMENT ratio (#PCDATA)>
+<!ELEMENT team_name (#PCDATA)>
+<!ELEMENT win_loss_record (#PCDATA)>
+<!ELEMENT player_ref EMPTY>
+<!ELEMENT coach_ref EMPTY>
+<!ELEMENT teams (home_team_ref,visitor_team_ref)>
+<!ELEMENT home_team_ref EMPTY>
+<!ELEMENT visitor_team_ref EMPTY>
+<!ELEMENT date (#PCDATA)>
+<!ELEMENT score (home_score,visitor_score,winner)>
+<!ELEMENT home_score (#PCDATA)>
+<!ELEMENT visitor_score (#PCDATA)>
+<!ELEMENT winner (#PCDATA)>
+<!ATTLIST player id ID #REQUIRED>
+<!ATTLIST coach id ID #REQUIRED>
+<!ATTLIST team id ID #REQUIRED>
+<!ATTLIST match id ID #REQUIRED>
+<!ATTLIST team_ref idref IDREF #REQUIRED>
+<!ATTLIST player_ref idref IDREF #REQUIRED>
+<!ATTLIST coach_ref idref IDREF #REQUIRED>
+<!ATTLIST home_team_ref idref IDREF #REQUIRED>
+<!ATTLIST visitor_team_ref idref IDREF #REQUIRED>
