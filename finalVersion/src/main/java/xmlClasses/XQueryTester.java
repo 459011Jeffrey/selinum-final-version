@@ -29,7 +29,7 @@ public class XQueryTester {
    }
 
    public static void execute() throws FileNotFoundException, XQException{
-      InputStream inputStream = new FileInputStream(new File("/Users/jeffreydeleeuw/eclipse-workspace/finalVersion/lib/xqueries/query2.xqy"));
+      InputStream inputStream = new FileInputStream(new File("/Users/jeffreydeleeuw/eclipse-workspace/finalVersion/lib/xqueries/query1.xqy"));
       XQDataSource ds = new SaxonXQDataSource();
       XQConnection conn = ds.getConnection();
       XQPreparedExpression exp = conn.prepareExpression(inputStream);

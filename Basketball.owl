@@ -1,0 +1,333 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns="http://www.owl-ontologies.com/unnamed.owl#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+  xml:base="http://www.owl-ontologies.com/unnamed.owl">
+  <owl:Ontology rdf:about=""/>
+  <owl:Class rdf:ID="Team">
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Match"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Coach"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Player"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="#Match">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Coach"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Team"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Player"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="#Coach">
+    <owl:disjointWith rdf:resource="#Match"/>
+    <owl:disjointWith rdf:resource="#Team"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Player"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="#Player">
+    <owl:disjointWith rdf:resource="#Coach"/>
+    <owl:disjointWith rdf:resource="#Team"/>
+    <owl:disjointWith rdf:resource="#Match"/>
+  </owl:Class>
+  <owl:ObjectProperty rdf:ID="hometeam">
+    <rdfs:range rdf:resource="#Team"/>
+    <rdfs:domain rdf:resource="#Match"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="visitorteam">
+    <rdfs:domain rdf:resource="#Match"/>
+    <rdfs:range rdf:resource="#Team"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasplayer">
+    <owl:inverseOf>
+      <owl:SymmetricProperty rdf:ID="plays"/>
+    </owl:inverseOf>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+    <rdfs:range rdf:resource="#Player"/>
+    <rdfs:domain rdf:resource="#Team"/>
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:ID="win_loss_record">
+    <rdfs:domain rdf:resource="#Team"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >This is a string because the value's are like: number-number (3-11 for example).</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="games_played">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="#Player"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="team_name">
+    <rdfs:domain rdf:resource="#Team"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="winner">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#Match"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="match_name">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#Match"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="age">
+    <rdfs:domain rdf:resource="#Player"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Multiple players could potentially have the same age, so no functionality.</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="wins">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="#Coach"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="losses">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="#Coach"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="name">
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Player"/>
+          <owl:Class rdf:about="#Coach"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Multiple players (and coaches) could potentially have the same name, so no functionality.</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="ratio">
+    <rdfs:domain rdf:resource="#Coach"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="home_score">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="#Match"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="visitor_score">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="#Match"/>
+  </owl:DatatypeProperty>
+  <owl:SymmetricProperty rdf:about="#plays">
+    <rdfs:domain rdf:resource="#Player"/>
+    <rdfs:range rdf:resource="#Team"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <owl:inverseOf rdf:resource="#hasplayer"/>
+  </owl:SymmetricProperty>
+  <owl:FunctionalProperty rdf:ID="coaches">
+    <rdfs:range rdf:resource="#Team"/>
+    <rdfs:domain rdf:resource="#Coach"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Since every team has a unique coach, and every coach can only be the coach of one unique team, the coaches and hascoach properties are both functional and inversefunctional. (Therefor symmetric).</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"/>
+    <owl:inverseOf>
+      <owl:InverseFunctionalProperty rdf:ID="hascoach"/>
+    </owl:inverseOf>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:FunctionalProperty>
+  <owl:InverseFunctionalProperty rdf:about="#hascoach">
+    <rdfs:domain rdf:resource="#Team"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Since every team has a unique coach, and every coach can only be the coach of one unique team, the coaches and hascoach properties are both functional and inversefunctional. (Therefor symmetric).</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:range rdf:resource="#Coach"/>
+    <owl:inverseOf rdf:resource="#coaches"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:InverseFunctionalProperty>
+  <Player rdf:ID="Kyle_Anderson">
+    <name rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Jimmy Butler</name>
+    <owl:differentFrom>
+      <Player rdf:ID="Jimmy_Butler">
+        <owl:differentFrom>
+          <Player rdf:ID="Grayson_Allen">
+            <plays>
+              <Team rdf:ID="Memphis_Grizzlies">
+                <hasplayer rdf:resource="#Grayson_Allen"/>
+                <owl:differentFrom>
+                  <Team rdf:ID="Miami_Heat">
+                    <hascoach>
+                      <Coach rdf:ID="Erik_Spoelstra">
+                        <wins rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+                        >0</wins>
+                        <ratio rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+                        >0.593</ratio>
+                        <losses rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+                        >140</losses>
+                        <owl:differentFrom>
+                          <Coach rdf:ID="Taylor_Jenkins">
+                            <owl:differentFrom>
+                              <Coach rdf:ID="Billy_Donovan">
+                                <owl:differentFrom rdf:resource="#Taylor_Jenkins"/>
+                                <wins rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+                                >206</wins>
+                                <coaches>
+                                  <Team rdf:ID="Oklahoma_City_Thunder">
+                                    <win_loss_record rdf:datatype=
+                                    "http://www.w3.org/2001/XMLSchema#string"
+                                    >13-5</win_loss_record>
+                                    <hasplayer>
+                                      <Player rdf:ID="Darius_Bazley">
+                                        <owl:differentFrom>
+                                          <Player rdf:ID="Bam_Adebayo">
+                                            <owl:differentFrom rdf:resource="#Darius_Bazley"/>
+                                            <games_played rdf:datatype=
+                                            "http://www.w3.org/2001/XMLSchema#int"
+                                            >15</games_played>
+                                            <owl:differentFrom rdf:resource="#Grayson_Allen"/>
+                                            <name rdf:datatype=
+                                            "http://www.w3.org/2001/XMLSchema#string"
+                                            ></name>
+                                            <owl:differentFrom rdf:resource="#Jimmy_Butler"/>
+                                            <owl:differentFrom>
+                                              <Player rdf:ID="Steven_Adams">
+                                                <name rdf:datatype=
+                                                "http://www.w3.org/2001/XMLSchema#string"
+                                                >Steven Adams</name>
+                                                <plays rdf:resource="#Oklahoma_City_Thunder"/>
+                                                <owl:differentFrom rdf:resource="#Grayson_Allen"/>
+                                                <owl:differentFrom rdf:resource="#Darius_Bazley"/>
+                                                <games_played
+                                                 rdf:datatype=
+                                                "http://www.w3.org/2001/XMLSchema#int"
+                                                >0</games_played>
+                                                <owl:differentFrom rdf:resource="#Jimmy_Butler"/>
+                                                <owl:differentFrom rdf:resource="#Kyle_Anderson"/>
+                                                <owl:differentFrom rdf:resource="#Bam_Adebayo"/>
+                                                <age rdf:datatype=
+                                                "http://www.w3.org/2001/XMLSchema#int"
+                                                >0</age>
+                                              </Player>
+                                            </owl:differentFrom>
+                                            <plays rdf:resource="#Miami_Heat"/>
+                                            <age rdf:datatype=
+                                            "http://www.w3.org/2001/XMLSchema#int"
+                                            >26</age>
+                                            <owl:differentFrom rdf:resource="#Kyle_Anderson"/>
+                                          </Player>
+                                        </owl:differentFrom>
+                                        <games_played rdf:datatype=
+                                        "http://www.w3.org/2001/XMLSchema#int"
+                                        >18</games_played>
+                                        <owl:differentFrom rdf:resource="#Kyle_Anderson"/>
+                                        <owl:differentFrom rdf:resource="#Jimmy_Butler"/>
+                                        <owl:differentFrom rdf:resource="#Steven_Adams"/>
+                                        <owl:differentFrom rdf:resource="#Grayson_Allen"/>
+                                        <name rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+                                        >Bam Adebayo</name>
+                                        <plays rdf:resource="#Oklahoma_City_Thunder"/>
+                                        <age rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+                                        >22</age>
+                                      </Player>
+                                    </hasplayer>
+                                    <owl:differentFrom rdf:resource="#Miami_Heat"/>
+                                    <team_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+                                    >Miami Heat</team_name>
+                                    <hascoach rdf:resource="#Billy_Donovan"/>
+                                    <hasplayer rdf:resource="#Steven_Adams"/>
+                                    <owl:differentFrom rdf:resource="#Memphis_Grizzlies"/>
+                                  </Team>
+                                </coaches>
+                                <name rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+                                ></name>
+                                <losses rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+                                >0</losses>
+                                <ratio rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+                                >0.595</ratio>
+                                <owl:differentFrom rdf:resource="#Erik_Spoelstra"/>
+                              </Coach>
+                            </owl:differentFrom>
+                            <ratio rdf:datatype="http://www.w3.org/2001/XMLSchema#float"
+                            >0.278</ratio>
+                            <name rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+                            >Taylor Jenkins</name>
+                            <wins rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+                            >5</wins>
+                            <coaches rdf:resource="#Memphis_Grizzlies"/>
+                            <owl:differentFrom rdf:resource="#Erik_Spoelstra"/>
+                            <losses rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+                            >368</losses>
+                          </Coach>
+                        </owl:differentFrom>
+                        <name rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+                        >Billy Donovan</name>
+                        <owl:differentFrom rdf:resource="#Billy_Donovan"/>
+                        <coaches rdf:resource="#Miami_Heat"/>
+                      </Coach>
+                    </hascoach>
+                    <win_loss_record rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+                    ></win_loss_record>
+                    <hasplayer rdf:resource="#Bam_Adebayo"/>
+                    <owl:differentFrom rdf:resource="#Oklahoma_City_Thunder"/>
+                    <team_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+                    ></team_name>
+                    <owl:differentFrom rdf:resource="#Memphis_Grizzlies"/>
+                    <hasplayer rdf:resource="#Jimmy_Butler"/>
+                  </Team>
+                </owl:differentFrom>
+                <owl:differentFrom rdf:resource="#Oklahoma_City_Thunder"/>
+                <win_loss_record rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+                >5-13</win_loss_record>
+                <hascoach rdf:resource="#Taylor_Jenkins"/>
+                <team_name rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+                ></team_name>
+                <hasplayer rdf:resource="#Kyle_Anderson"/>
+              </Team>
+            </plays>
+            <owl:differentFrom rdf:resource="#Darius_Bazley"/>
+            <name rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >Bam Adebayo</name>
+            <owl:differentFrom rdf:resource="#Kyle_Anderson"/>
+            <owl:differentFrom rdf:resource="#Jimmy_Butler"/>
+            <owl:differentFrom rdf:resource="#Steven_Adams"/>
+            <age rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+            >19</age>
+            <owl:differentFrom rdf:resource="#Bam_Adebayo"/>
+            <games_played rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+            >18</games_played>
+          </Player>
+        </owl:differentFrom>
+        <owl:differentFrom rdf:resource="#Darius_Bazley"/>
+        <games_played rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >8</games_played>
+        <owl:differentFrom rdf:resource="#Steven_Adams"/>
+        <plays rdf:resource="#Miami_Heat"/>
+        <owl:differentFrom rdf:resource="#Kyle_Anderson"/>
+        <owl:differentFrom rdf:resource="#Bam_Adebayo"/>
+        <name rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Grayson Allen</name>
+        <age rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+        >24</age>
+      </Player>
+    </owl:differentFrom>
+    <owl:differentFrom rdf:resource="#Steven_Adams"/>
+    <owl:differentFrom rdf:resource="#Bam_Adebayo"/>
+    <plays rdf:resource="#Memphis_Grizzlies"/>
+    <age rdf:datatype="http://www.w3.org/2001/XMLSchema#int">30</age>
+    <games_played rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+    >14</games_played>
+    <owl:differentFrom rdf:resource="#Grayson_Allen"/>
+    <owl:differentFrom rdf:resource="#Darius_Bazley"/>
+  </Player>
+  <Match rdf:ID="MIAvsMEM">
+    <hometeam rdf:resource="#Miami_Heat"/>
+    <visitor_score rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+    >101</visitor_score>
+    <visitorteam rdf:resource="#Memphis_Grizzlies"/>
+    <home_score rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+    >0</home_score>
+    <winner rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Miami Heat</winner>
+  </Match>
+</rdf:RDF>
+
+<!-- Created with Protege (with OWL Plugin 2.1, Build 284)  http://protege.stanford.edu -->

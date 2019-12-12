@@ -13,32 +13,26 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class CreateRDF {
 
-	static String personURI    = "http://basketball/person";
+	static String personURI    = "http://basketball";
 	static String fullName     = "John Smith";
 
 	private static WebDriver driver;
 	//		model.write(System.out);
 	public static void main(String[] args) {
 		// some definitions
-		String personURI    = "http://somewhere/JohnSmith";
-		String givenName    = "John";
-		String familyName   = "Smith";
-		String fullName     = givenName + " " + familyName;
+		
 
 		// create an empty Model
 		Model model = ModelFactory.createDefaultModel();
 		
-		Property P = model.createProperty( personURI + "P" );
+		Property name = model.createProperty( personURI + "name" );
+		
+		Resource player = model.createResource(personURI);
+		Resource human = model.createResource(personURI+ "human");
 
-		// create the resource
-		//   and add the properties cascading style
-		Resource johnSmith
-		  = model.createResource(personURI)
-		         .addProperty(VCARD.FN, fullName)
-		         .addProperty(VCARD.N,
-		                      model.createResource()
-		                           .addProperty(P, givenName)
-		                           .addProperty(VCARD.Family, familyName));
+		//model.add(player, personURI+"human", human);
+		player.addProperty(name, "");
+				
 		model.write(System.out);
 		
 		

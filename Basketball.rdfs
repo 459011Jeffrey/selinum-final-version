@@ -1,0 +1,122 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE rdf:RDF [
+	 <!ENTITY rdf 'http://www.w3.org/1999/02/22-rdf-syntax-ns#'>
+	 <!ENTITY rdf_ 'http://protege.stanford.edu/rdf'>
+	 <!ENTITY rdfs 'http://www.w3.org/2000/01/rdf-schema#'>
+]>
+<rdf:RDF xmlns:rdf="&rdf;"
+	 xmlns:rdf_="&rdf_;"
+	 xmlns:rdfs="&rdfs;">
+<rdfs:Class rdf:about="&rdf_;Coach"
+	 rdfs:label="Coach">
+	<rdfs:subClassOf rdf:resource="&rdf_;Person"/>
+	<rdfs:subClassOf rdf:resource="&rdfs;Resource"/>
+</rdfs:Class>
+<rdfs:Class rdf:about="&rdf_;Match"
+	 rdfs:label="Match">
+	<rdfs:subClassOf rdf:resource="&rdfs;Resource"/>
+</rdfs:Class>
+<rdfs:Class rdf:about="&rdf_;Person"
+	 rdfs:label="Person">
+	<rdfs:subClassOf rdf:resource="&rdfs;Resource"/>
+</rdfs:Class>
+<rdfs:Class rdf:about="&rdf_;Player"
+	 rdfs:label="Player">
+	<rdfs:subClassOf rdf:resource="&rdf_;Person"/>
+	<rdfs:subClassOf rdf:resource="&rdfs;Resource"/>
+</rdfs:Class>
+<rdfs:Class rdf:about="&rdf_;Team"
+	 rdfs:label="Team">
+	<rdfs:subClassOf rdf:resource="&rdfs;Resource"/>
+</rdfs:Class>
+<rdf:Property rdf:about="&rdf_;age"
+	 rdfs:label="age">
+	<rdfs:domain rdf:resource="&rdf_;Player"/>
+	<rdfs:range rdf:resource="&rdfs;Literal"/>
+</rdf:Property>
+<rdf:Property rdf:about="&rdf_;coaches"
+	 rdfs:label="coaches">
+	<rdfs:domain rdf:resource="&rdf_;Coach"/>
+	<rdfs:range rdf:resource="&rdf_;Team"/>
+</rdf:Property>
+<rdf:Property rdf:about="&rdf_;games_played"
+	 rdfs:label="games_played">
+	<rdfs:domain rdf:resource="&rdf_;Player"/>
+	<rdfs:range rdf:resource="&rdfs;Literal"/>
+</rdf:Property>
+<rdf:Property rdf:about="&rdf_;hascoach"
+	 rdfs:label="hascoach">
+	<rdfs:range rdf:resource="&rdf_;Coach"/>
+	<rdfs:domain rdf:resource="&rdf_;Team"/>
+</rdf:Property>
+<rdf:Property rdf:about="&rdf_;hasplayer"
+	 rdfs:label="hasplayer">
+	<rdfs:range rdf:resource="&rdf_;Player"/>
+	<rdfs:domain rdf:resource="&rdf_;Team"/>
+</rdf:Property>
+<rdf:Property rdf:about="&rdf_;home_score"
+	 rdfs:label="home_score">
+	<rdfs:domain rdf:resource="&rdf_;Match"/>
+	<rdfs:range rdf:resource="&rdfs;Literal"/>
+</rdf:Property>
+<rdf:Property rdf:about="&rdf_;hometeam"
+	 rdfs:label="hometeam">
+	<rdfs:domain rdf:resource="&rdf_;Match"/>
+	<rdfs:range rdf:resource="&rdf_;Team"/>
+</rdf:Property>
+<rdf:Property rdf:about="&rdf_;losses"
+	 rdfs:label="losses">
+	<rdfs:domain rdf:resource="&rdf_;Coach"/>
+	<rdfs:range rdf:resource="&rdfs;Literal"/>
+</rdf:Property>
+<rdf:Property rdf:about="&rdf_;match_name"
+	 rdfs:label="match_name">
+	<rdfs:domain rdf:resource="&rdf_;Match"/>
+	<rdfs:range rdf:resource="&rdfs;Literal"/>
+</rdf:Property>
+<rdf:Property rdf:about="&rdf_;name"
+	 rdfs:label="name">
+	<rdfs:domain rdf:resource="&rdf_;Person"/>
+	<rdfs:range rdf:resource="&rdfs;Literal"/>
+</rdf:Property>
+<rdf:Property rdf:about="&rdf_;plays"
+	 rdfs:label="plays">
+	<rdfs:domain rdf:resource="&rdf_;Player"/>
+	<rdfs:range rdf:resource="&rdf_;Team"/>
+</rdf:Property>
+<rdf:Property rdf:about="&rdf_;ratio"
+	 rdfs:label="ratio">
+	<rdfs:domain rdf:resource="&rdf_;Coach"/>
+	<rdfs:range rdf:resource="&rdfs;Literal"/>
+</rdf:Property>
+<rdf:Property rdf:about="&rdf_;team_name"
+	 rdfs:label="team_name">
+	<rdfs:domain rdf:resource="&rdf_;Team"/>
+	<rdfs:range rdf:resource="&rdfs;Literal"/>
+</rdf:Property>
+<rdf:Property rdf:about="&rdf_;visitor_score"
+	 rdfs:label="visitor_score">
+	<rdfs:domain rdf:resource="&rdf_;Match"/>
+	<rdfs:range rdf:resource="&rdfs;Literal"/>
+</rdf:Property>
+<rdf:Property rdf:about="&rdf_;visitorteam"
+	 rdfs:label="visitorteam">
+	<rdfs:domain rdf:resource="&rdf_;Match"/>
+	<rdfs:range rdf:resource="&rdf_;Team"/>
+</rdf:Property>
+<rdf:Property rdf:about="&rdf_;win_loss_record"
+	 rdfs:label="win_loss_record">
+	<rdfs:domain rdf:resource="&rdf_;Team"/>
+	<rdfs:range rdf:resource="&rdfs;Literal"/>
+</rdf:Property>
+<rdf:Property rdf:about="&rdf_;winner"
+	 rdfs:label="winner">
+	<rdfs:domain rdf:resource="&rdf_;Match"/>
+	<rdfs:range rdf:resource="&rdfs;Literal"/>
+</rdf:Property>
+<rdf:Property rdf:about="&rdf_;wins"
+	 rdfs:label="wins">
+	<rdfs:domain rdf:resource="&rdf_;Coach"/>
+	<rdfs:range rdf:resource="&rdfs;Literal"/>
+</rdf:Property>
+</rdf:RDF>

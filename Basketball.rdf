@@ -1,0 +1,109 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE rdf:RDF [
+	 <!ENTITY rdf 'http://www.w3.org/1999/02/22-rdf-syntax-ns#'>
+	 <!ENTITY rdf_ 'http://protege.stanford.edu/rdf'>
+	 <!ENTITY rdfs 'http://www.w3.org/2000/01/rdf-schema#'>
+]>
+<rdf:RDF xmlns:rdf="&rdf;"
+	 xmlns:rdf_="&rdf_;"
+	 xmlns:rdfs="&rdfs;">
+<rdf_:Player rdf:about="&rdf_;Basketball_Instance_14"
+	 rdf_:age="26"
+	 rdf_:games_played="15"
+	 rdf_:name="Steven Adams"
+	 rdfs:label="Steven Adams">
+	<rdf_:plays rdf:resource="&rdf_;Basketball_Instance_38"/>
+</rdf_:Player>
+<rdf_:Team rdf:about="&rdf_;Basketball_Instance_19"
+	 rdf_:team_name="Miami Heat"
+	 rdf_:win_loss_record="13-5"
+	 rdfs:label="Miami Heat">
+	<rdf_:hasplayer rdf:resource="&rdf_;Basketball_Instance_31"/>
+	<rdf_:hasplayer rdf:resource="&rdf_;Basketball_Instance_35"/>
+	<rdf_:hascoach rdf:resource="&rdf_;Basketball_Instance_36"/>
+</rdf_:Team>
+<rdf_:Coach rdf:about="&rdf_;Basketball_Instance_23"
+	 rdf_:losses="13"
+	 rdf_:name="Taylor Jenkins"
+	 rdf_:ratio="0.278"
+	 rdf_:wins="5"
+	 rdfs:label="Taylor Jenkins">
+	<rdf_:coaches rdf:resource="&rdf_;Basketball_Instance_40"/>
+</rdf_:Coach>
+<rdf_:Match rdf:about="&rdf_;Basketball_Instance_30"
+	 rdf_:home_score="120"
+	 rdf_:match_name="MIAvsMEM"
+	 rdf_:visitor_score="101"
+	 rdf_:winner="Miami Heat"
+	 rdfs:label="MIAvsMEM">
+	<rdf_:hometeam rdf:resource="&rdf_;Basketball_Instance_19"/>
+	<rdf_:visitorteam rdf:resource="&rdf_;Basketball_Instance_40"/>
+</rdf_:Match>
+<rdf_:Player rdf:about="&rdf_;Basketball_Instance_31"
+	 rdf_:age="22"
+	 rdf_:games_played="18"
+	 rdf_:name="Bam Adebayo"
+	 rdfs:label="Bam Adebayo">
+	<rdf_:plays rdf:resource="&rdf_;Basketball_Instance_19"/>
+</rdf_:Player>
+<rdf_:Player rdf:about="&rdf_;Basketball_Instance_32"
+	 rdf_:age="24"
+	 rdf_:games_played="8"
+	 rdf_:name="Grayson Allen"
+	 rdfs:label="Grayson Allen">
+	<rdf_:plays rdf:resource="&rdf_;Basketball_Instance_40"/>
+</rdf_:Player>
+<rdf_:Player rdf:about="&rdf_;Basketball_Instance_33"
+	 rdf_:age="26"
+	 rdf_:games_played="17"
+	 rdf_:name="Kyle Anderson"
+	 rdfs:label="Kyle Anderson">
+	<rdf_:plays rdf:resource="&rdf_;Basketball_Instance_40"/>
+</rdf_:Player>
+<rdf_:Player rdf:about="&rdf_;Basketball_Instance_34"
+	 rdf_:age="19"
+	 rdf_:games_played="18"
+	 rdf_:name="Darius Bazley"
+	 rdfs:label="Darius Bazley">
+	<rdf_:plays rdf:resource="&rdf_;Basketball_Instance_38"/>
+</rdf_:Player>
+<rdf_:Player rdf:about="&rdf_;Basketball_Instance_35"
+	 rdf_:age="30"
+	 rdf_:games_played="14"
+	 rdf_:name="Jimmy Butler"
+	 rdfs:label="Jimmy Butler">
+	<rdf_:plays rdf:resource="&rdf_;Basketball_Instance_19"/>
+</rdf_:Player>
+<rdf_:Coach rdf:about="&rdf_;Basketball_Instance_36"
+	 rdf_:losses="368"
+	 rdf_:name="Erik Spoelstra"
+	 rdf_:ratio="0.593"
+	 rdf_:wins="536"
+	 rdfs:label="Erik Spoelstra">
+	<rdf_:coaches rdf:resource="&rdf_;Basketball_Instance_19"/>
+</rdf_:Coach>
+<rdf_:Coach rdf:about="&rdf_;Basketball_Instance_37"
+	 rdf_:losses="140"
+	 rdf_:name="Billy Donovan"
+	 rdf_:ratio="0.595"
+	 rdf_:wins="206"
+	 rdfs:label="Billy Donovan">
+	<rdf_:coaches rdf:resource="&rdf_;Basketball_Instance_38"/>
+</rdf_:Coach>
+<rdf_:Team rdf:about="&rdf_;Basketball_Instance_38"
+	 rdf_:team_name="Oklahoma City Thunder"
+	 rdf_:win_loss_record="7-11"
+	 rdfs:label="Oklahoma City Thunder">
+	<rdf_:hasplayer rdf:resource="&rdf_;Basketball_Instance_14"/>
+	<rdf_:hasplayer rdf:resource="&rdf_;Basketball_Instance_34"/>
+	<rdf_:hascoach rdf:resource="&rdf_;Basketball_Instance_37"/>
+</rdf_:Team>
+<rdf_:Team rdf:about="&rdf_;Basketball_Instance_40"
+	 rdf_:team_name="Memphis Grizzlies"
+	 rdf_:win_loss_record="5-13"
+	 rdfs:label="Memphis Grizzlies">
+	<rdf_:hascoach rdf:resource="&rdf_;Basketball_Instance_23"/>
+	<rdf_:hasplayer rdf:resource="&rdf_;Basketball_Instance_32"/>
+	<rdf_:hasplayer rdf:resource="&rdf_;Basketball_Instance_33"/>
+</rdf_:Team>
+</rdf:RDF>
